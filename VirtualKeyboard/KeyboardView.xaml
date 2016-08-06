@@ -1,0 +1,137 @@
+﻿<Popup x:Class="SioSanalKlavye.VirtualKeyboard.KeyboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:virtualKeyboard="clr-namespace:SanalKlavye.VirtualKeyboard"
+             xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:Behaviors="clr-namespace:SioSanalKlavye.VirtualKeyboard"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=virtualKeyboard:KeyboardViewModel,IsDesignTimeCreatable=True}"
+             Width="840" Height="343"    Name="Sanalkalavye" >
+   
+
+    <Popup.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Focusable" Value="False"/>
+        </Style>
+        
+    </Popup.Resources>
+    <Grid  Background="LightGray">
+
+       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1"/>
+        </Grid.RowDefinitions>
+        <Grid Name="Gridust" Grid.Column="1"  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="700"/>
+                <ColumnDefinition Width="86"/>
+            </Grid.ColumnDefinitions>
+            <Border
+            x:Name="BrderTasi"
+            Grid.Column="0" 
+            BorderBrush="LightGray"
+            BorderThickness="10 10 10 5"
+            Background="DarkGray"
+            CornerRadius="10, 10, 0, 0">
+                <Viewbox>
+                    <TextBlock Text="Taşı" >
+ 
+                    </TextBlock>
+                </Viewbox>
+            </Border>
+            <Border
+            x:Name="Brderkapat"
+            Grid.Column="1"  
+            BorderBrush="LightGray"
+            BorderThickness="10 10 10 5"
+            Background="DarkGray"
+            CornerRadius="10, 10, 0, 0"
+            
+            >
+                <Viewbox>
+                    <Button  Height="50" Width="95"   Canvas.Top="6" Click="Button_Click_1">
+                        <Path Stretch="Fill" Width="36" Height="24"  Data="F1M1737.88,3617.83L1724.69,3604.65 1738.69,3590.66C1742.6,3586.75 1742.59,3580.41 1738.69,3576.51 1734.79,3572.62 1728.46,3572.61 1724.54,3576.52L1710.56,3590.51 1696.02,3575.98C1692.11,3572.07 1685.77,3572.08 1681.87,3575.98 1677.98,3579.87 1677.97,3586.2 1681.88,3590.11L1696.42,3604.65 1682.7,3618.37C1678.78,3622.28 1678.8,3628.61 1682.69,3632.51 1686.59,3636.41 1692.92,3636.42 1696.83,3632.51L1710.55,3618.79 1723.74,3631.97C1727.64,3635.87 1733.97,3635.86 1737.87,3631.97 1741.77,3628.07 1741.78,3621.74 1737.88,3617.83"  Fill="#FF333333"/>
+                    </Button>
+                </Viewbox>
+            </Border>
+        </Grid>
+        <Canvas Grid.Row="2"  Grid.Column="1" Width="840">
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyDoubleQuote}" Content="{Binding Model.KeyDoubleQuote.DisplayName}" Height="50" Width="50" Canvas.Left="6" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key1}" Content="{Binding Model.Key1.DisplayName}" Height="50" Width="50" Canvas.Left="62" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key2}" Content="{Binding Model.Key2.DisplayName}" Height="50" Width="50" Canvas.Left="118" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key3}" Content="{Binding Model.Key3.DisplayName}" Height="50" Width="50" Canvas.Left="174" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key4}" Content="{Binding Model.Key4.DisplayName}" Height="50" Width="50" Canvas.Left="230" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key5}" Content="{Binding Model.Key5.DisplayName}" Height="50" Width="50" Canvas.Left="286" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key6}" Content="{Binding Model.Key6.DisplayName}" Height="50" Width="50" Canvas.Left="342" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key7}" Content="{Binding Model.Key7.DisplayName}" Height="50" Width="50" Canvas.Left="398" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key8}" Content="{Binding Model.Key8.DisplayName}" Height="50" Width="50" Canvas.Left="454" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key9}" Content="{Binding Model.Key9.DisplayName}" Height="50" Width="50" Canvas.Left="510" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key0}" Content="{Binding Model.Key0.DisplayName}" Height="50" Width="50" Canvas.Left="566" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyStar}" Content="{Binding Model.KeyStar.DisplayName}" Height="50" Width="50" Canvas.Left="622" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyDash}" Content="{Binding Model.KeyDash.DisplayName}" Height="50" Width="50" Canvas.Left="678" Canvas.Top="6"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyBack}" Height="50" Width="95" Canvas.Left="734" Canvas.Top="6">
+                <Path Stretch="Fill" Width="36" Height="24" Data="F1M555.0371,274.4893L552.7871,276.7383L549.9861,273.9373L547.1991,276.7243L545.1131,274.6393L547.9001,271.8523L545.0101,268.9603L547.2601,266.7113L550.1501,269.6023L552.8921,266.8613L554.9761,268.9463L552.2361,271.6883z M555.3751,264.0003L544.8751,264.0003C543.1251,264.1253,535.0001,270.7503,535.0001,272.2503C535.0001,273.7503,543.1251,279.3753,544.8751,279.5003L555.3751,279.5003C558.8751,279.5003,559.3751,277.7093,559.3751,275.5003L559.3751,268.0003C559.3751,265.7913,558.7501,264.0003,555.3751,264.0003" Fill="#FF333333"/>
+            </Button>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyTab}" Content="{Binding Model.KeyTab.DisplayName}" Height="50" Width="64" Canvas.Left="6" Canvas.Top="62"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyQ}" Content="{Binding Model.KeyQ.DisplayName}" Height="50" Width="50" Canvas.Left="76" Canvas.Top="62"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyW}" Content="{Binding Model.KeyW.DisplayName}" Canvas.Left="132" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyE}" Content="{Binding Model.KeyE.DisplayName}" Canvas.Left="188" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyR}" Content="{Binding Model.KeyR.DisplayName}" Canvas.Left="244" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyT}" Content="{Binding Model.KeyT.DisplayName}" Canvas.Left="300" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyY}" Content="{Binding Model.KeyY.DisplayName}" Canvas.Left="356" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyU}" Content="{Binding Model.KeyU.DisplayName}" Canvas.Left="412" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyI}" Content="{Binding Model.KeyI.DisplayName}" Canvas.Left="468" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyO}" Content="{Binding Model.KeyO.DisplayName}" Canvas.Left="524" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyP}" Content="{Binding Model.KeyP.DisplayName}" Canvas.Left="580" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyGTr}" Content="{Binding Model.KeyGTr.DisplayName}" Canvas.Left="636" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyUTr}" Content="{Binding Model.KeyUTr.DisplayName}" Canvas.Left="692" Canvas.Top="62" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyAt}" Content="{Binding Model.KeyAt.DisplayName}" Canvas.Left="748" Canvas.Top="62" Height="50" Width="81"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyEnter}" Content="{Binding Model.KeyEnter.DisplayName}" Canvas.Left="706" Canvas.Top="118" Height="50" Width="123"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyCaps}" Content="{Binding Model.KeyCaps.DisplayName}" Height="50" Width="78" Canvas.Left="6" Canvas.Top="118"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyA}" Content="{Binding Model.KeyA.DisplayName}" Canvas.Left="90" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyS}" Content="{Binding Model.KeyS.DisplayName}" Canvas.Left="146" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyD}" Content="{Binding Model.KeyD.DisplayName}" Canvas.Left="202" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyF}" Content="{Binding Model.KeyF.DisplayName}" Canvas.Left="258" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyG}" Content="{Binding Model.KeyG.DisplayName}" Canvas.Left="314" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyH}" Content="{Binding Model.KeyH.DisplayName}" Canvas.Left="370" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyJ}" Content="{Binding Model.KeyJ.DisplayName}" Canvas.Left="426" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyK}" Content="{Binding Model.KeyK.DisplayName}" Canvas.Left="482" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyL}" Content="{Binding Model.KeyL.DisplayName}" Canvas.Left="538" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeySTr}" Content="{Binding Model.KeySTr.DisplayName}" Canvas.Left="594" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyITr}" Content="{Binding Model.KeyITr.DisplayName}" Canvas.Left="650" Canvas.Top="118" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyShift}" Height="50" Width="92" Canvas.Left="6" Canvas.Top="174" HorizontalContentAlignment="Left">
+                <Path Margin="7,0,0,0" Fill="#FF333333" Stretch="Fill" Width="28" Height="24" Data="F1M269.5,262C269.026,262,268.552,262.168,268.171,262.505L259.671,270.505C259.05,271.057,258.835,271.935,259.131,272.71C259.425,273.487,260.169,274,261,274L265,274L265,278C265,279.104,265.896,280,267,280L272,280C273.104,280,274,279.104,274,278L274,274L278,274C278.81,274,279.538,273.513,279.849,272.766C280.157,272.018,279.986,271.158,279.415,270.585L270.914,262.586C270.524,262.197,270.013,262,269.5,262 M269.5,264L278,272L272,272L272,278L267,278L267,272L261,272L269.5,264"/>
+            </Button>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyZ}" Content="{Binding Model.KeyZ.DisplayName}" Canvas.Left="104" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyX}" Content="{Binding Model.KeyX.DisplayName}" Canvas.Left="160" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyC}" Content="{Binding Model.KeyC.DisplayName}" Canvas.Left="216" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyV}" Content="{Binding Model.KeyV.DisplayName}" Canvas.Left="272" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyB}" Content="{Binding Model.KeyB.DisplayName}" Canvas.Left="328" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyN}" Content="{Binding Model.KeyN.DisplayName}" Canvas.Left="384" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyM}" Content="{Binding Model.KeyM.DisplayName}" Canvas.Left="440" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyOTr}" Content="{Binding Model.KeyOTr.DisplayName}" Canvas.Left="496" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyCTr}" Content="{Binding Model.KeyCTr.DisplayName}" Canvas.Left="552" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyPoint}" Content="{Binding Model.KeyPoint.DisplayName}" Canvas.Left="608" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyComma}" Content="{Binding Model.KeyComma.DisplayName}" Canvas.Left="664" Canvas.Top="174" Height="50" Width="50"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyShift}" Height="50" Width="109" Canvas.Left="720" Canvas.Top="174" HorizontalContentAlignment="Left">
+                <Path Margin="7,0,0,0" Fill="#FF333333" Stretch="Fill" Width="28" Height="24" Data="F1M269.5,262C269.026,262,268.552,262.168,268.171,262.505L259.671,270.505C259.05,271.057,258.835,271.935,259.131,272.71C259.425,273.487,260.169,274,261,274L265,274L265,278C265,279.104,265.896,280,267,280L272,280C273.104,280,274,279.104,274,278L274,274L278,274C278.81,274,279.538,273.513,279.849,272.766C280.157,272.018,279.986,271.158,279.415,270.585L270.914,262.586C270.524,262.197,270.013,262,269.5,262 M269.5,264L278,272L272,272L272,278L267,278L267,272L261,272L269.5,264"/>
+            </Button>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeySpace}" Content="{Binding Model.KeySpace.DisplayName}" Height="50" Width="498" Canvas.Left="160" Canvas.Top="230"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.UpArrow}" Content="{Binding Model.UpArrow.DisplayName}" Height="50" Width="71" Canvas.Left="6" Canvas.Top="230"/>
+            <Button Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.DownArrow}" Content="{Binding Model.DownArrow.DisplayName}" Height="50" Width="72" Canvas.Left="82" Canvas.Top="230"/>
+        </Canvas>
+
+    </Grid>
+</Popup>

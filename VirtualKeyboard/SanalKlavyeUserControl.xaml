@@ -1,0 +1,380 @@
+﻿<UserControl x:Class="SioSanalKlavye.VirtualKeyboard.SanalKlavyeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:virtualKeyboard="clr-namespace:SanalKlavye.VirtualKeyboard"
+             xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:Behaviors="clr-namespace:SioSanalKlavye.VirtualKeyboard"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=virtualKeyboard:KeyboardViewModel,IsDesignTimeCreatable=True}"
+                Name="Sanalkalavye"   d:DesignHeight="410" d:DesignWidth="990"   >
+
+    <UserControl.Resources>
+        <Style x:Key="UstMenuButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Focusable" Value="False"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="MouseOverAnim">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFF8FFFF"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFC2FBFF"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle1">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFD0FCFF"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="rectangle1">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MouseOverAnim_Copy1">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="0:0:0.3" Value="#FFE0FDFF"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="0:0:0.3" Value="#FF81EDF5"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle1">
+                                    <SplineColorKeyFrame KeyTime="0:0:0.3" Value="#FFA8F9FF"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="rectangle1">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MouseClickAnim">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="rectangle1">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="3"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle x:Name="rectangle1" RadiusY="3" RadiusX="3" Stroke="#FFC186EB" Fill="#FFA8F9FF" StrokeThickness="0">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="52" Color="#FFE7E7E7" Opacity="0"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <Rectangle x:Name="rectangle" RadiusY="3" RadiusX="3" Stroke="Black" Margin="3" StrokeThickness="0">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF81EDF5" Offset="1"/>
+                                        <GradientStop Color="#FFE0FDFF"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="52" Color="#FFE7E7E7" Opacity="0"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="MouseOverAnim_Copy1_BeginStoryboard" Storyboard="{StaticResource MouseOverAnim_Copy1}"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MouseOverAnim}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard x:Name="MouseClickAnim_BeginStoryboard" Storyboard="{StaticResource MouseClickAnim}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!--<Style x:Key="UstMenuButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="MouseOverAnim">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFE7E366"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle1">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#F6FFFB6E"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="rectangle1">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.358"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="rectangle">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MouseOverAnim_Copy1">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="0:0:0.3" Value="#FFE9E205"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle1">
+                                    <SplineColorKeyFrame KeyTime="0:0:0.3" Value="#F6E9E205"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="rectangle1">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="rectangle">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="ClickAnim">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="rectangle">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="3"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#FF760183"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF837F01"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle x:Name="rectangle" Fill="#FFE9E205" RadiusY="3" RadiusX="3" Stroke="#FF837F01" StrokeThickness="1">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FFEFEA54" BlurRadius="35" Direction="277" Opacity="0"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <Rectangle x:Name="rectangle1" RadiusY="3" RadiusX="3" Stroke="Black" StrokeThickness="0" Margin="4">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="#F6E9E205" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FFEFEA54" BlurRadius="35" Direction="277" Opacity="0"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="MouseOverAnim_Copy1_BeginStoryboard" Storyboard="{StaticResource MouseOverAnim_Copy1}"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MouseOverAnim}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard x:Name="ClickAnim_BeginStoryboard" Storyboard="{StaticResource ClickAnim}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+
+    </UserControl.Resources>
+    <Grid x:Name="AnaGrid"    >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+
+
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Border  Grid.Column="1" Grid.Row="1"  x:Name="BorderYonetici" Margin="2" BorderBrush="White" CornerRadius="3" BorderThickness="1"  >
+            <Grid x:Name="Gridsifir" Grid.Column="1" Grid.Row="1"   >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11"/>
+                    <RowDefinition Height="11"/>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="7"/>
+                </Grid.RowDefinitions>
+
+
+                <Grid Grid.Row="2" x:Name="GridBir"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Style="{StaticResource UstMenuButtonStyle }"     Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyDoubleQuote}" Content="{Binding Model.KeyDoubleQuote.DisplayName}"      Height="60" Width="60"  />
+                    <Button Grid.Column="1"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key1}" Content="{Binding Model.Key1.DisplayName}"                          Height="60" Width="60" />
+                    <Button Grid.Column="2"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key2}" Content="{Binding Model.Key2.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="3"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key3}" Content="{Binding Model.Key3.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="4"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key4}" Content="{Binding Model.Key4.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="5"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key5}" Content="{Binding Model.Key5.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="6"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key6}" Content="{Binding Model.Key6.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="7"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key7}" Content="{Binding Model.Key7.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="8"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key8}" Content="{Binding Model.Key8.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="9"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key9}" Content="{Binding Model.Key9.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="10" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.Key0}" Content="{Binding Model.Key0.DisplayName}"                          Height="60" Width="60"  />
+                    <Button Grid.Column="11" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyStar}" Content="{Binding Model.KeyStar.DisplayName}"                    Height="60" Width="60"  />
+                    <Button Grid.Column="12" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyDash}" Content="{Binding Model.KeyDash.DisplayName}"                    Height="60" Width="60"  />
+                    <Button Grid.Column="13" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyBack}" Height="60" Width="110"  >
+                        <Path Stretch="Fill" Width="36" Height="24" Data="F1M555.0371,274.4893L552.7871,276.7383L549.9861,273.9373L547.1991,276.7243L545.1131,274.6393L547.9001,271.8523L545.0101,268.9603L547.2601,266.7113L550.1501,269.6023L552.8921,266.8613L554.9761,268.9463L552.2361,271.6883z M555.3751,264.0003L544.8751,264.0003C543.1251,264.1253,535.0001,270.7503,535.0001,272.2503C535.0001,273.7503,543.1251,279.3753,544.8751,279.5003L555.3751,279.5003C558.8751,279.5003,559.3751,277.7093,559.3751,275.5003L559.3751,268.0003C559.3751,265.7913,558.7501,264.0003,555.3751,264.0003" Fill="#FF333333"/>
+                    </Button>
+
+                </Grid>
+                <Grid Grid.Row="3" x:Name="Gridiki"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyTab}" Content="{Binding Model.KeyTab.DisplayName}"    Height="60" Width="74"      />
+                    <Button Grid.Column="1"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyQ}" Content="{Binding Model.KeyQ.DisplayName}"        Height="60" Width="60"  />
+                    <Button Grid.Column="2"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyW}" Content="{Binding Model.KeyW.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="3"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyE}" Content="{Binding Model.KeyE.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="4"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyR}" Content="{Binding Model.KeyR.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="5"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyT}" Content="{Binding Model.KeyT.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="6"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyY}" Content="{Binding Model.KeyY.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="7"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyU}" Content="{Binding Model.KeyU.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="8"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyI}" Content="{Binding Model.KeyI.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="9"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyO}" Content="{Binding Model.KeyO.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="10"   Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyP}" Content="{Binding Model.KeyP.DisplayName}"        Height="60" Width="60"   />
+                    <Button Grid.Column="11"   Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyGTr}" Content="{Binding Model.KeyGTr.DisplayName}"    Height="60" Width="60"/>
+                    <Button Grid.Column="12"   Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyUTr}" Content="{Binding Model.KeyUTr.DisplayName}"    Height="60" Width="60"/>
+                    <Button Grid.Column="13"   Style="{StaticResource UstMenuButtonStyle }"   Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyAt}" Content="{Binding Model.KeyAt.DisplayName}"      Height="60" Width="95"/>
+
+                </Grid>
+                <Grid Grid.Row="4" x:Name="Griduc">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyCaps}" Content="{Binding Model.KeyCaps.DisplayName}"               Height="60" Width="85"  />
+                    <Button Grid.Column="1"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyA}" Content="{Binding Model.KeyA.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="2"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyS}" Content="{Binding Model.KeyS.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="3"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyD}" Content="{Binding Model.KeyD.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="4"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyF}" Content="{Binding Model.KeyF.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="5"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyG}" Content="{Binding Model.KeyG.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="6"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyH}" Content="{Binding Model.KeyH.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="7"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyJ}" Content="{Binding Model.KeyJ.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="8"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyK}" Content="{Binding Model.KeyK.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="9"     Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyL}" Content="{Binding Model.KeyL.DisplayName}"                     Height="60" Width="60"/>
+                    <Button Grid.Column="10"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeySTr}" Content="{Binding Model.KeySTr.DisplayName}"                 Height="60" Width="60"/>
+                    <Button Grid.Column="11"    Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyITr}" Content="{Binding Model.KeyITr.DisplayName}"                 Height="60" Width="60"/>
+                    <Button  Grid.Column="12"   Style="{StaticResource UstMenuButtonStyle }"   Margin="3"  Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyEnter}" Content="{Binding Model.KeyEnter.DisplayName}"             Height="60" Width="148"/>
+
+
+                </Grid>
+                <Grid Grid.Row="5" x:Name="Griddort">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button  Grid.Column="0"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyShift}" Height="60" Width="95"    HorizontalContentAlignment="Left">
+                        <Path Margin="7,0,0,0" Fill="#FF333333" Stretch="Fill" Width="28" Height="24" Data="F1M269.5,262C269.026,262,268.552,262.168,268.171,262.505L259.671,270.505C259.05,271.057,258.835,271.935,259.131,272.71C259.425,273.487,260.169,274,261,274L265,274L265,278C265,279.104,265.896,280,267,280L272,280C273.104,280,274,279.104,274,278L274,274L278,274C278.81,274,279.538,273.513,279.849,272.766C280.157,272.018,279.986,271.158,279.415,270.585L270.914,262.586C270.524,262.197,270.013,262,269.5,262 M269.5,264L278,272L272,272L272,278L267,278L267,272L261,272L269.5,264"/>
+                    </Button>
+                    <Button  Grid.Column="1"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyZ}" Content="{Binding Model.KeyZ.DisplayName}"             Height="60" Width="60"/>
+                    <Button  Grid.Column="2"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyX}" Content="{Binding Model.KeyX.DisplayName}"             Height="60" Width="60"/>
+                    <Button  Grid.Column="3"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyC}" Content="{Binding Model.KeyC.DisplayName}"             Height="60" Width="60"/>
+                    <Button  Grid.Column="4"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyV}" Content="{Binding Model.KeyV.DisplayName}"             Height="60" Width="60"/>
+                    <Button  Grid.Column="5"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyB}" Content="{Binding Model.KeyB.DisplayName}"             Height="60" Width="60"/>
+                    <Button  Grid.Column="6"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyN}" Content="{Binding Model.KeyN.DisplayName}"             Height="60" Width="60"/>
+                    <Button  Grid.Column="7"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyM}" Content="{Binding Model.KeyM.DisplayName}"             Height="60" Width="60"/>
+                    <Button  Grid.Column="8"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyOTr}" Content="{Binding Model.KeyOTr.DisplayName}"         Height="60" Width="60"/>
+                    <Button  Grid.Column="9"   Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyCTr}" Content="{Binding Model.KeyCTr.DisplayName}"         Height="60" Width="60"/>
+                    <Button  Grid.Column="10"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyPoint}" Content="{Binding Model.KeyPoint.DisplayName}"     Height="60" Width="60"/>
+                    <Button  Grid.Column="11"  Style="{StaticResource UstMenuButtonStyle }"    Margin="3"   Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyComma}" Content="{Binding Model.KeyComma.DisplayName}"     Height="60" Width="60"/>
+                    <Button   Grid.Column="12" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeyShift}"                                                   Height="60" Width="140"  HorizontalContentAlignment="Left">
+                        <Path Margin="7,0,0,0" Fill="#FF333333" Stretch="Fill" Width="28" Height="24" Data="F1M269.5,262C269.026,262,268.552,262.168,268.171,262.505L259.671,270.505C259.05,271.057,258.835,271.935,259.131,272.71C259.425,273.487,260.169,274,261,274L265,274L265,278C265,279.104,265.896,280,267,280L272,280C273.104,280,274,279.104,274,278L274,274L278,274C278.81,274,279.538,273.513,279.849,272.766C280.157,272.018,279.986,271.158,279.415,270.585L270.914,262.586C270.524,262.197,270.013,262,269.5,262 M269.5,264L278,272L272,272L272,278L267,278L267,272L261,272L269.5,264"/>
+                    </Button>
+
+
+                </Grid>
+                <Grid Grid.Row="6" x:Name="GridAlti">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.KeySpace}" Content="{Binding Model.KeySpace.DisplayName}"             Height="60" Width="700"  />
+                    <Button Grid.Column="1" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.UpArrow}" Content="{Binding Model.UpArrow.DisplayName}"               Height="60" Width="130"  />
+                    <Button Grid.Column="2" Style="{StaticResource UstMenuButtonStyle }"    Margin="3"    Command="{Binding PressKeyCommand}" CommandParameter="{Binding Model.DownArrow}" Content="{Binding Model.DownArrow.DisplayName}"           Height="60" Width="128"  />
+
+                </Grid>
+                <Grid Grid.Row="7">
+                    <TextBlock  Text="Zinde Sanal Klavye  v.1 " FontSize="7" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+            </Grid>
+        </Border>
+       
+
+
+
+    </Grid>
+
+</UserControl>
