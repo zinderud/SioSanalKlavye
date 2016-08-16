@@ -3,7 +3,7 @@
 // SanalKlavye   ILogicalKey.cs
 // 2013031316:27
 // 2013  03
-// 13 13
+
 //
 #endregion
 
