@@ -6,7 +6,7 @@ using System.Reflection;
 namespace SioSanalKlavye
 {
     /// <summary>
-    /// Provide a command that can bind to ButtonBase.Command 
+    /// Provide a command that can bind to ButtonBase.Command .
     /// and accept command parameters for Execute and CanExecute.
     /// </summary>
     /// <typeparam name="T"></typeparam>
